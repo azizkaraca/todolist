@@ -1,5 +1,7 @@
 # ToDoList
 
+This app keeps your to-do list. However, you can add new tasks to this list and update your current stage.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 ## Development server
