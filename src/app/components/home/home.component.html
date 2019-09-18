@@ -1,0 +1,78 @@
+<div class="pagehome">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="page-title">
+                    <img class="svg" src="assets/svg/hourglass.svg">
+                    <span>To Do List App</span>
+                </h2>
+            </div>
+            <div class="col-md-6">
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Input Here" #newTodo>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" type="submit" (click)="addTodo(newTodo)">ADD</button>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col md-12">
+                    <mat-card class="d-flex">
+                            <div class="example-container">
+                                    <h3>Pendings</h3>
+                                  
+                                    <div
+                                      cdkDropList
+                                      #pendingsList="cdkDropList"
+                                      [cdkDropListData]="data.pendings"
+                                      [cdkDropListConnectedTo]="[inProgressList]"
+                                      class="example-list"
+                                      (cdkDropListDropped)="drop($event)">
+                                      <div class="example-box" *ngFor="let item of data.pendings" cdkDrag>
+                                          <img class="svg" src="assets/svg/edit-document.svg">
+                                          {{item}}
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="example-container">
+                                        <h3>in Progress</h3>
+                                      
+                                        <div
+                                          cdkDropList
+                                          #inProgressList="cdkDropList"
+                                          [cdkDropListData]="data.inProgress"
+                                          [cdkDropListConnectedTo]="[pendingsList, doneList]"
+                                          class="example-list"
+                                          (cdkDropListDropped)="drop($event)">
+                                          <div class="example-box" *ngFor="let item of data.inProgress" cdkDrag>
+                                                <img class="svg" src="assets/svg/time-left.svg">
+                                                {{item}}
+                                            </div>
+                                        </div>
+                                      </div>
+                                  
+                                  <div class="example-container">
+                                    <h3>Done</h3>
+                                  
+                                    <div
+                                      cdkDropList
+                                      #doneList="cdkDropList"
+                                      [cdkDropListData]="data.done"
+                                      [cdkDropListConnectedTo]="[inProgressList]"
+                                      class="example-list"
+                                      (cdkDropListDropped)="drop($event)">
+                                      <div class="example-box" *ngFor="let item of data.done" cdkDrag>
+                                            <img class="svg" src="assets/svg/work-done.svg">
+                                            {{item}}
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  
+                    </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
